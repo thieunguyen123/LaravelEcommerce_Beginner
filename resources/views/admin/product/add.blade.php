@@ -2,11 +2,22 @@
 @section('container-fluid py-4')
     <div class="card" >
         <div class="card-header">
-            <h4>Add  Category</h4>
+            <h4>Add  Product</h4>
         </div>
         <div class="card-body">
-            <form action="{{url('insert-category')}}" method="POST" enctype="multipart/form-data" >
+            <form action="{{url('insert-product')}}" method="POST" enctype="multipart/form-data" >
                 @csrf
+                <div class="form-group">
+                    <div class="col-sm-10">
+                    <select class="form-select"  name="cate_id"   >
+                        <option selected> Select a Category </option>
+                        @foreach ($product as $item )
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach
+
+                      </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label  class="control-label col-sm-2" >Name:</label>
                     <div class="col-sm-10">
@@ -21,11 +32,53 @@
                       <input type="text" class="form-control" style="background-color: rgba(255, 0, 221, 0.2);  "  placeholder="Enter slug" name="slug"  >
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" >Small Description:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" style="background-color: rgba(255, 0, 221, 0.2);  "
+
+                      name="small_description"  >
+                    </div>
+                  </div>
+
 
                   <div class="form-group">
                     <label class="control-label col-sm-2" >Description:</label>
                     <div class="col-sm-10">
                         <textarea name="description" style="background-color: rgba(255, 0, 221, 0.2);  " class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" >Original Price:</label>
+                    <div class="col-sm-2">
+                      <input type="number" class="form-control" style="background-color: rgba(255, 0, 221, 0.2);  "
+
+                      name="original_price"  >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" >Selling Price:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" style="background-color: rgba(255, 0, 221, 0.2);  "
+
+                      name="selling_price"  >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" >Quantity:</label>
+                    <div class="col-sm-2">
+                      <input type="number" class="form-control" style="background-color: rgba(255, 0, 221, 0.2);  "
+
+                      name="qty"  >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" >Tax:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" style="background-color: rgba(255, 0, 221, 0.2);  "
+
+                      name="tax"  >
                     </div>
                   </div>
 
@@ -41,7 +94,7 @@
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="checkbox">
-                        <label><input type="checkbox" style="background-color: rgba(255, 0, 221, 0.2);  " name="popular">Popular</label>
+                        <label><input type="checkbox" style="background-color: rgba(255, 0, 221, 0.2);  " name="trending">Trending</label>
                       </div>
                     </div>
                   </div>
